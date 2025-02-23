@@ -1,5 +1,7 @@
 package com.example.bibliotecas.Sistema_de_Bibliotecas.model;
 
+import com.example.bibliotecas.Sistema_de_Bibliotecas.dto.LivroDto;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -44,5 +46,16 @@ public class Livro {
 
     @Enumerated(EnumType.STRING)
     private StatusDoLivro statusLivro;
+
+    public Livro(LivroDto livro) {
+        titulo = livro.titulo();
+        autor = livro.autor();
+        editora = livro.editora();
+        anoDePublicação = livro.anoDePublicação();
+        isbn = livro.autor();
+        categoria = livro.categoria();
+        statusLivro = livro.statusLivro();
+
+    }
 
 }

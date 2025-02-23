@@ -1,5 +1,7 @@
 package com.example.bibliotecas.Sistema_de_Bibliotecas.model;
 
+import com.example.bibliotecas.Sistema_de_Bibliotecas.dto.ClienteDto;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -47,5 +49,16 @@ public class Cliente {
 
     @Enumerated(EnumType.STRING)
     private TipoDeCliente tipoCliente;
+
+    public Cliente(ClienteDto cliente) {
+        nome = cliente.nome();
+        email = cliente.email();
+        cpf = cliente.cpf();
+        telefone = cliente.telefone();
+        endereco = cliente.endereco();
+        statusConta = cliente.statusConta();
+        tipoCliente = cliente.tipoCliente();
+
+    }
 
 }
