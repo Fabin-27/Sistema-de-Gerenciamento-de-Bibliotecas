@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.bibliotecas.Sistema_de_Bibliotecas.dto.LivroDto;
 import com.example.bibliotecas.Sistema_de_Bibliotecas.model.Livro;
+import com.example.bibliotecas.Sistema_de_Bibliotecas.model.TipoDeLivro;
 import com.example.bibliotecas.Sistema_de_Bibliotecas.repository.LivroRepository;
 
 @Service
@@ -24,8 +25,18 @@ public class LivroService {
 
     }
 
+    public List<Livro> findByCategoria(TipoDeLivro tipoLivro) throws Exception {
+        List<Livro> livros = livroRepository.findLivroByCategoria(tipoLivro);
+
+        if (livros.isEmpty()) {
+            System.out.println("Nenhum Livro encotrado ");
+
+        }
+        return livros;
+    }
+
     public Livro createLivro(LivroDto livro) {
-        Livro newLivro = new Livro();
+        Livro newLivro = new Livro(livro);
         saveLivro(newLivro);
         return newLivro;
     };

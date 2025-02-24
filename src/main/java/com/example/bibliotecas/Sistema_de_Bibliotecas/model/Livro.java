@@ -52,7 +52,7 @@ public class Livro {
         autor = livro.autor();
         editora = livro.editora();
         anoDePublicação = livro.anoDePublicação();
-        isbn = livro.autor();
+        isbn = livro.isbn();
         categoria = livro.categoria();
         statusLivro = livro.statusLivro();
 

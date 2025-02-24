@@ -19,7 +19,7 @@ import com.example.bibliotecas.Sistema_de_Bibliotecas.service.ClienteService;
 
 @Controller
 @RequestMapping("/clientes")
-public class ClienteController { // cria um novo projeto e vai adicionando as coisas aos poucos
+public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
