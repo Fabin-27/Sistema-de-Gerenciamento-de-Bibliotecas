@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.example.bibliotecas.Sistema_de_Bibliotecas.dto.LivroDto;
 import com.example.bibliotecas.Sistema_de_Bibliotecas.model.Livro;
+import com.example.bibliotecas.Sistema_de_Bibliotecas.model.StatusDoLivro;
 import com.example.bibliotecas.Sistema_de_Bibliotecas.model.TipoDeLivro;
 import com.example.bibliotecas.Sistema_de_Bibliotecas.repository.LivroRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class LivroService {
@@ -51,4 +54,18 @@ public class LivroService {
 
     }
 
+    @Transactional
+    public Livro alterLivro(Long id, String titulo, String autor, Integer anoDePublicacao, TipoDeLivro categoria,
+            String editora, StatusDoLivro statusLivro) throws Exception {
+        Livro livro = livroRepository.findById(id).orElseThrow(() -> new Exception("Livro não encontrado"));
+
+        livro.setTitulo(titulo);
+        livro.setAutor(autor);
+        livro.setAnoDePublicacao(anoDePublicacao);
+        livro.setCategoria(categoria);
+        livro.setEditora(editora);
+        livro.setStatusLivro(statusLivro);
+
+        return livroRepository.save(livro);
+    }
 }

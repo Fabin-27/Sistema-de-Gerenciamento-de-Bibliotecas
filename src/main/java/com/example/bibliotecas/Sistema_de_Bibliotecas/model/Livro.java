@@ -36,7 +36,7 @@ public class Livro {
 
     private String editora;
 
-    private Integer anoDePublicação;
+    private Integer anoDePublicacao;
 
     @Column(unique = true)
     private String isbn;
@@ -51,7 +51,7 @@ public class Livro {
         titulo = livro.titulo();
         autor = livro.autor();
         editora = livro.editora();
-        anoDePublicação = livro.anoDePublicação();
+        anoDePublicacao = livro.anoDePublicacao();
         isbn = livro.isbn();
         categoria = livro.categoria();
         statusLivro = livro.statusLivro();
