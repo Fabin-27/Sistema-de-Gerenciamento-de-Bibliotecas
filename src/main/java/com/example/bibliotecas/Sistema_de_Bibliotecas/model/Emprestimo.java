@@ -1,6 +1,9 @@
 package com.example.bibliotecas.Sistema_de_Bibliotecas.model;
 
 import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -39,7 +42,10 @@ public class Emprestimo {
     @JoinColumn(name = "livro_id")
     private Livro livro;
 
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private Date dataEmprestimo;
+
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private Date dataDevolucao;
 
     @Enumerated(EnumType.STRING)
