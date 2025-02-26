@@ -63,6 +63,16 @@ public class LivroController {
 
     }
 
+    @GetMapping("/titulo/{titulo}")
+    public ResponseEntity<List<Livro>> findLivroByTitulo(@PathVariable String titulo) {
+        List<Livro> livros = livroService.findLivroByTitulo(titulo);
+
+        if (livros.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return new ResponseEntity<>(livros, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<Livro> createLivro(@RequestBody LivroDto livro) {
         Livro newLivro = livroService.createLivro(livro);

@@ -45,6 +45,7 @@ public class LivroService {
     };
 
     public Livro saveLivro(Livro livro) {
+        livro.setStatusLivro(StatusDoLivro.Disponível);
         return livroRepository.save(livro);
 
     }
@@ -68,4 +69,17 @@ public class LivroService {
 
         return livroRepository.save(livro);
     }
+
+    public List<Livro> findLivroByTitulo(String titulo) {
+        return livroRepository.findByTituloContainingIgnoreCase(titulo);
+    }
+
+    public void devolverLivro(Long livroId) throws Exception {
+        Livro livro = livroRepository.findById(livroId)
+                .orElseThrow(() -> new Exception("Livro não encontrado"));
+
+        livro.setStatusLivro(StatusDoLivro.Disponível); // Alterando o status para "Disponível"
+        livroRepository.save(livro); // Salvando o livro atualizado
+    }
+
 }
